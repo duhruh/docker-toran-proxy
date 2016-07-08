@@ -62,7 +62,7 @@ if [ ! -e $DATA_DIRECTORY/toran/composer/auth.json ]; then
     if [ "${TORAN_TOKEN_GITHUB}" != "false" ]; then
         cp -f $ASSETS_DIRECTORY/config/composer.json $DATA_DIRECTORY/toran/composer/auth.json
         echo "Installing Token Github..."
-        sed -i "s/\(\"github.com\":\"\)[^\"]*\(\"\)/\1$TORAN_TOKEN_GITHUB\2/g" $DATA_DIRECTORY/toran/composer/auth.json
+        sed -i "s|\"github.com\":|\"github.com\":\"$TORAN_TOKEN_GITHUB\"|g" $DATA_DIRECTORY/toran/composer/auth.json
     else
         echo "WARNING: "
         echo "  Variable TORAN_TOKEN_GITHUB is empty !"
